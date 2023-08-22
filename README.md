@@ -1,6 +1,6 @@
-# Example deploying ERC20 to Neon Labs Devnet using Foundry
+# Example Fetching Chainlink Price Feeds on Neon Labs Devnet using Foundry
 
-This directory contains all the files necessary to deploy simplest ERC20-like contract using Neon onto the Solana blockchain.
+This directory contains all the files necessary to test Chainlink price feeds on Neon Labs Devnet.
 
 ## Prerequisites
 
