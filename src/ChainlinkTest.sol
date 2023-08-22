@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.21;
 
-/*interface AggregatorV3Interface {
+interface AggregatorV3Interface {
     function decimals() external view returns (uint8);
 
     function description() external view returns (string memory);
@@ -34,31 +34,32 @@ pragma solidity ^0.8.21;
 }
 
 contract ChainlinkTest {
-    function getNeonSolPrice(address priceFeedAddress) external view returns (int256){
-        (, int256 price, , , ) = AggregatorV3Interface(
-            priceFeedAddress
-        ).latestRoundData();
+
+    AggregatorV3Interface internal priceFeed;
+
+    constructor(address _feedAddress) {
+        priceFeed = AggregatorV3Interface(
+            _feedAddress
+        );
+    }
+
+    function getNeonSolPrice() external view returns (int256){
+        (, int256 price, , , ) = priceFeed.latestRoundData();
         return price;
     }
 
-    function getNeonSolDecimals(address priceFeedAddress) external view returns (uint8){
-        uint8 decimal = AggregatorV3Interface(
-            priceFeedAddress
-        ).decimals();
+    function getNeonSolDecimals() external view returns (uint8){
+        uint8 decimal = priceFeed.decimals();
         return decimal;
     }
 
-    function getNeonSolDescription(address priceFeedAddress) external view returns (string memory){
-        string memory description = AggregatorV3Interface(
-            priceFeedAddress
-        ).description();
+    function getNeonSolDescription() external view returns (string memory){
+        string memory description = priceFeed.description();
         return description;
     }
 
-    function getNeonSolVersion(address priceFeedAddress) external view returns (uint256){
-        uint256 version = AggregatorV3Interface(
-            priceFeedAddress
-        ).version();
+    function getNeonSolVersion() external view returns (uint256){
+        uint256 version = priceFeed.version();
         return version;
     }
-}*/
+}
